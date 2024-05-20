@@ -1,33 +1,29 @@
-let timeoutActive = false;
+const imgArray = [
+  "./images/dice1.png",
+  "./images/dice2.png",
+  "./images/dice3.png",
+  "./images/dice4.png",
+  "./images/dice5.png",
+  "./images/dice6.png",
+];
 
-refreshButton.addEventListener("click", () => {
-  if (!timeoutActive) {
-    gameOn();
-  }
-});
+const refreshButton = document.querySelector("h1");
+const h2Text = document.querySelector("h2");
+const dice1 = document.querySelector("#dice1");
+const dice2 = document.querySelector("#dice2");
+
+refreshButton.addEventListener("click", gameOn);
 
 function gameOn() {
-  // Set timeout active
-  timeoutActive = true;
+  const m = Math.floor(Math.random() * 6);
+  const n = Math.floor(Math.random() * 6);
+  h2Text.classList.add("hidden");
+  dice1.setAttribute("src", imgArray[m]);
+  dice2.setAttribute("src", imgArray[n]);
+  refreshButton.textContent =
+    m > n ? "Player 1 Wins!" : n > m ? "Player 2 Wins!" : "It's a Tie";
 
-  let m = Math.floor(Math.random() * 6);
-  let n = Math.floor(Math.random() * 6);
-  let attributeValue1 = imgArray[m];
-  let attributeValue2 = imgArray[n];
-  dice1.setAttribute("src", attributeValue1);
-  dice2.setAttribute("src", attributeValue2);
-  if (m > n) {
-    refreshButton.textContent = "Player 1 Wins!";
-  } else if (n > m) {
-    refreshButton.textContent = "Player 2 Wins!";
-  } else {
-    refreshButton.textContent = "It's a Tie";
-  }
-
-  // Set timeout to revert the text back to default after 2 seconds
   setTimeout(() => {
     refreshButton.textContent = "Play Again";
-    // Reset timeout active
-    timeoutActive = false;
   }, 3000);
 }
