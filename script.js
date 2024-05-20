@@ -24,6 +24,7 @@ function gameOn() {
     m > n ? "Player 1 Wins!" : n > m ? "Player 2 Wins!" : "It's a Tie";
 
   setTimeout(() => {
+refreshButton.addEventListener("click", console.log("2s"));
     refreshButton.textContent = "Play Again";
-  }, 0);
+  }, 2000);
 }
