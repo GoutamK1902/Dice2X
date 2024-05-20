@@ -10,7 +10,7 @@ body {
   color: aliceblue;
   background: linear-gradient(319deg, #003c43, #7469b6, #2d3250, #643843);
   background-size: 800% 800%;
-  animation: AnimationName 15s ease infinite;
+  animation: backgroundAnimations 15s ease infinite;
   height: 100vh;
 }
 
@@ -72,7 +72,20 @@ footer {
 .hidden {
   visibility: hidden;
 }
-@keyframes AnimationName {
+
+.rotate {
+  animation: rotate3dAnimation 40ms forwards infinite;
+}
+
+@keyframes rotate3dAnimation {
+  0% {
+    transform: rotate3d(0, 0, 0, 0deg);
+  }
+  100% {
+    transform: rotate3d(1, 1, 1, 360deg);
+  }
+}
+@keyframes backgroundAnimations {
   0% {
     background-position: 0% 19%;
   }
