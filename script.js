@@ -1,4 +1,4 @@
-let imgArray = [
+const imgArray = [
   "./images/dice1.png",
   "./images/dice2.png",
   "./images/dice3.png",
@@ -7,31 +7,21 @@ let imgArray = [
   "./images/dice6.png",
 ];
 
-let refreshButton = document.querySelector("h1");
+const refreshButton = document.querySelector("h1");
+const dice1 = document.querySelector("#dice1");
+const dice2 = document.querySelector("#dice2");
 
-let dice1 = document.querySelector("#dice1");
-let dice2 = document.querySelector("#dice2");
-
-refreshButton.addEventListener("click", () => {
-  gameOn();
-});
+refreshButton.addEventListener("click", gameOn);
 
 function gameOn() {
-  let m = Math.floor(Math.random() * 6);
-  let n = Math.floor(Math.random() * 6);
-  let attributeValue1 = imgArray[m];
-  let attributeValue2 = imgArray[n];
+  const m = Math.floor(Math.random() * 6);
+  const n = Math.floor(Math.random() * 6);
+  dice1.setAttribute("src", imgArray[m]);
+  dice2.setAttribute("src", imgArray[n]);
+  refreshButton.textContent =
+    m > n ? "Player 1 Wins!" : n > m ? "Player 2 Wins!" : "It's a Tie";
 
-  dice1.setAttribute("src", attributeValue1);
-  dice2.setAttribute("src", attributeValue2);
-  if (m > n) {
-    refreshButton.textContent = "Player 1 Wins!";
-  } else if (n > m) {
-    refreshButton.textContent = "Player 2 Wins!";
-  } else {
-    refreshButton.textContent = "It's a Tie";
-  }
+  setTimeout(() => {
+    refreshButton.textContent = "Play Again";
+  }, 3000);
 }
-
-// Optional: Initialize the dice images when the page loads
-window.onload = gameOn;
