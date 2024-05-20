@@ -8,6 +8,7 @@ const imgArray = [
 ];
 
 const refreshButton = document.querySelector("h1");
+const h2Text = document.querySelector("h2");
 const dice1 = document.querySelector("#dice1");
 const dice2 = document.querySelector("#dice2");
 
@@ -16,6 +17,7 @@ refreshButton.addEventListener("click", gameOn);
 function gameOn() {
   const m = Math.floor(Math.random() * 6);
   const n = Math.floor(Math.random() * 6);
+  h2Text.classList.add("hidden");
   dice1.setAttribute("src", imgArray[m]);
   dice2.setAttribute("src", imgArray[n]);
   refreshButton.textContent =
