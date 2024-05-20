@@ -15,15 +15,24 @@ const dice2 = document.querySelector("#dice2");
 refreshButton.addEventListener("click", gameOn);
 
 function gameOn() {
-  const m = Math.floor(Math.random() * 6);
-  const n = Math.floor(Math.random() * 6);
-  h2Text.classList.add("hidden");
-  dice1.setAttribute("src", imgArray[m]);
-  dice2.setAttribute("src", imgArray[n]);
-  refreshButton.textContent =
-    m > n ? "Player 1 Wins!" : n > m ? "Player 2 Wins!" : "It's a Tie";
-
+  dice1.classList.add("rotate");
+  dice2.classList.add("rotate");
   setTimeout(() => {
+    refreshButton.style.pointerEvents = "none";
+    const m = Math.floor(Math.random() * 6);
+    const n = Math.floor(Math.random() * 6);
+    h2Text.classList.add("hidden");
+    dice1.setAttribute("src", imgArray[m]);
+    dice2.setAttribute("src", imgArray[n]);
+    refreshButton.textContent =
+      m > n ? "Player 1 Wins!" : n > m ? "Player 2 Wins!" : "It's a Tie";
+    dice1.classList.remove("rotate");
+    dice2.classList.remove("rotate");
+  }, 1200);
+  setTimeout(() => {
+    dice1.setAttribute("src", "./images/dice3.png");
+    dice2.setAttribute("src", "./images/dice3.png");
+    refreshButton.style.pointerEvents = "auto";
     refreshButton.textContent = "Play Again";
   }, 3000);
 }
