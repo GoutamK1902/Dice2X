@@ -25,5 +25,5 @@ function gameOn() {
 
   setTimeout(() => {
     refreshButton.textContent = "Play Again";
-  }, 3000);
+  }, 500);
 }
