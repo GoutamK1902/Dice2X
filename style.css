@@ -69,7 +69,9 @@ footer {
   text-align: center;
   background-color: #222;
 }
-
+.hidden {
+  visibility: hidden;
+}
 @keyframes AnimationName {
   0% {
     background-position: 0% 19%;
